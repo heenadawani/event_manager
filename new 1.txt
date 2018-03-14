@@ -1,0 +1,13 @@
+To get technical events in which user has not participated yet
+$sql="SELECT * FROM event_list WHERE category='tech' and name not in(select name from interest_list where user='$user')";
+
+ same goes for other categories 
+
+To add event
+$sql = "INSERT INTO event_list (category, name, date, time, venue)
+                    VALUES ('$category', '$name' , '$date', '$time', '$venue')";
+To participate
+    $sql = "INSERT INTO interest_list (user, name, status)
+                    VALUES ('$user', '$event' , 'going')";
+To cancel participation
+$sql = "DELETE FROM interest_list where name='$event' and user='$user'";
